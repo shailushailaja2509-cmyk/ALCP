@@ -1,0 +1,9 @@
+#include <iostream>
+using namespace std;
+int main(){
+int n;
+cin>>n;
+int result=1<<n;
+cout<<result;
+return 0;
+}
