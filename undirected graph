@@ -1,0 +1,27 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+bool dfs(int v,int p,vector<int> adj[],bool vis[]){
+    vis[v]=true;
+    for(int u:adj[v]){
+        if(!vis[u]){
+            if(dfs(u,v,adj,vis)) return true;
+        }
+        else if(u!=p) return true;
+    }
+    return false;
+}
+int main(){
+    int n=4;
+    vector<int> adj[4];
+    adj[0]={1,2};
+    adj[1]={0,2};
+    adj[2]={0,1,3};
+    adj[3]={2};
+    bool vis[4]={false};
+    if(dfs(0,-1,adj,vis))
+        cout<<"Cycle detected";
+    else
+        cout<<"No cycle";
+    return 0;
+}
